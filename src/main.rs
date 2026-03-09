@@ -77,7 +77,23 @@ impl TaylorSwiftSong {
     }
 }
 
+struct ShortDuration(u32, u32);
+
+struct LongDuration(u32, u32);
+
+struct Empty;
+
 fn main() {
+    let my_empty_struct = Empty;
+
+    let work_shift = ShortDuration(8, 0);
+    println!("{} hours & {} minutes", work_shift.0, work_shift.1);
+
+    let era = LongDuration(5, 3);
+    println!("{} years, {} months", era.0, era.1);
+
+    go_to_work(work_shift);
+
     let mut computer = Computer::new(String::from("M3 max"), 64, 2);
     computer.update_cpu(String::from("M4 max"));
     computer.update_memory(128);
@@ -140,4 +156,8 @@ fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
         price,
         is_hot,
     }
+}
+
+fn go_to_work(length: ShortDuration){
+    println!("Passing time {} hours {} minutes", length.0, length.1);
 }
